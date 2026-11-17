@@ -24,7 +24,7 @@ Run the tests with `python3 serve.py`, then `python3 tests/test_game.py`. Final 
 - **Symptom:** holding R flipped the orientation several times and left it random. Ctrl+R / Cmd+R (reload) also flipped it.
 - **Root cause:** the keydown handler responded to auto-repeat events and ignored modifier keys.
 - **Fix:** the handler ignores `e.repeat` and Ctrl/Cmd/Alt combinations.
-- **Verified:** "holding R toggles orientation only once" and a check that Ctrl+R doesn't rotate.
+- **Verified:** "holding R toggles only once".
 
 ## Layout and display
 
@@ -38,7 +38,7 @@ Run the tests with `python3 serve.py`, then `python3 tests/test_game.py`. Final 
 - **Symptom:** the banner from the final shot was visible behind the victory/defeat card.
 - **Root cause:** the banner fades out over 1.8 s, but the end screen opens 1.7 s after the last shot.
 - **Fix:** `showEndScreen()` cancels the banner animation and hides it first.
-- **Verified:** "destroyed banner cleared from end screen" checks that the banner is fully transparent when the card appears.
+- **Verified:** "ship-destroyed banner cleared from end screen" checks that the banner is fully transparent when the card appears.
 
 ### 6. Placement instruction repeated itself
 - **Symptom:** the status line gave the same placement instruction twice in one message.
@@ -50,13 +50,13 @@ Run the tests with `python3 serve.py`, then `python3 tests/test_game.py`. Final 
 - **Symptom:** on screens 520 px wide or less, the mute button hid its SOUND ON / MUTED label. That fell short of the requirement for a clearly visible mute control.
 - **Root cause:** the label was hidden on mobile to avoid overlapping the title.
 - **Fix:** the label stays visible. On narrow screens the header moves below the button instead.
-- **Verified:** at 375×700, the button and its label are fully on-screen and don't overlap the header.
+- **Verified:** "mute control fully visible on phone, with text label" and "mute control does not overlap title on phone" at 375×700.
 
 ### 8. Mute button covered the status message on phones
 - **Symptom:** after scrolling to the enemy board on a 375 px phone, the end of every status message was hidden under the mute button.
 - **Root cause:** the sticky status bar (`top: 0`) and the fixed mute button (`top: 10px`) shared the top of the screen.
 - **Fix:** on narrow screens the status bar sticks 54 px from the top, below the button.
-- **Verified:** a 375×700 check scrolls to the enemy board and confirms the two no longer overlap.
+- **Verified:** "mute control does not cover the sticky status text while scrolled (phone)" at 375×700.
 
 ### 9. Long names stretched the board panels
 - **Symptom:** each board panel was about 35 px wider than its grid, leaving an empty strip.
@@ -68,7 +68,7 @@ Run the tests with `python3 serve.py`, then `python3 tests/test_game.py`. Final 
 - **Symptom:** during battle, a tall building from the background showed through the dimmed Rotate button and made its label hard to read.
 - **Root cause:** disabled controls used `opacity: .38`, which also made their backgrounds see-through.
 - **Fix:** disabled controls keep a solid background and are dimmed by greying their text and border instead.
-- **Verified:** a check confirms all four disabled controls have opacity 1 during battle (0.38 before the fix).
+- **Verified:** "disabled buttons stay opaque so the scene can't show through their labels" confirms all four disabled controls have opacity 1 during battle (0.38 before the fix).
 
 ### 11. Subtitle unreadable over the painted backdrop
 - **Symptom:** the subtitle and story line sat on the brightest light rays of the new backdrop and were barely legible.
