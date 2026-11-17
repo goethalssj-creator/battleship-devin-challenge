@@ -1,6 +1,6 @@
 # Detailed Bug Log: Atlantis: War for the Lost Kingdom
 
-This log lists every genuine software defect found and fixed during development. It covers the original Battleship game and its naval and Atlantis redesigns. Each entry gives the symptom, root cause, fix and verification. Unless noted otherwise, each verification is an automated Playwright check in `tests/test_game.py` that failed before the fix and passes after it.
+This log lists every genuine software defect found and fixed during development. It covers the original Battleship game and its naval and Atlantis redesigns. Each entry gives the symptom, root cause, fix and verification. Unless noted otherwise, each fix is verified by an automated Playwright check in `tests/test_game.py`.
 
 Not included: features and design changes the user requested (for example the victory and defeat screens, new artwork, sounds and names), and reports that turned out not to be defects (for example horizontal placement, which always worked through the Rotate button and R key).
 

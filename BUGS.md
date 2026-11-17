@@ -1,6 +1,6 @@
 # Bug Report: Atlantis: War for the Lost Kingdom
 
-This report covers genuine software defects found and fixed during development. Each fix was confirmed by an automated Playwright check that failed before the fix and passes after it. Requested features, design changes and user misunderstandings are not listed. The full list of 12 fixed bugs is in [docs/BUG_LOG_DETAILED.md](docs/BUG_LOG_DETAILED.md).
+This report covers genuine software defects found and fixed during development. Each fix is covered by an automated Playwright check in `tests/test_game.py`. Requested features, design changes and user misunderstandings are not listed. The full list of 12 fixed bugs is in [docs/BUG_LOG_DETAILED.md](docs/BUG_LOG_DETAILED.md).
 
 ## 1. Previous game's AI turn fired into a new game
 - **Issue:** if a new game started within 0.6 s of a shot, the old game's pending AI move landed on the new board, giving the AI a free first shot.
